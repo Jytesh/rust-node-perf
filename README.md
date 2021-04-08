@@ -14,7 +14,7 @@ This project provides a minimal implementation of a function `add(a, b)` in each
 │ (index) │   module   │    relativeTime    │ effort │
 ├─────────┼────────────┼────────────────────┼────────┤
 │    0    │    'js'    │         1          │ lowest │
-│    1    │ 'wasmPack' │ 1.7524918867705868 │ highest│
+│    1    │ 'wasmPack' │ 1.7524918867705868 │ low    |
 │    2    │   'neon'   │ 15.817699428654072 │ medium │
 │    3    │  'napiRs'  │  3.13050560950176  │  low   │
 └─────────┴────────────┴────────────────────┴────────┘
