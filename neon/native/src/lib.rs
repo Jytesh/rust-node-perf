@@ -1,10 +1,8 @@
-#[macro_use]
 extern crate neon;
 
 use neon::prelude::*;
 
 fn add(mut cx: FunctionContext) -> JsResult<JsNumber> {
-    let mut this = cx.this();
     let a = cx.argument::<JsNumber>(0)?.value();
     let b = cx.argument::<JsNumber>(1)?.value();
 

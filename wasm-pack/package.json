@@ -10,5 +10,8 @@
     "postinstall": "wasm-pack build --target nodejs --release"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "wasm-pack": "^0.9.1"
+  }
 }

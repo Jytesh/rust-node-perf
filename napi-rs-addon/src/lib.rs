@@ -1,25 +1,20 @@
+extern crate napi;
 #[macro_use]
-extern crate napi_rs as napi;
-#[macro_use]
-extern crate napi_rs_derive;
+extern crate napi_derive;
 
-use napi::{CallContext, Env, Number, Object, Result, Value};
+use napi::{CallContext, Result, JsObject, JsNumber };
+
 use std::convert::TryInto;
 
-register_module!(test_module, init);
-
-fn init<'env>(
-  env: &'env Env,
-  exports: &'env mut Value<'env, Object>,
-) -> Result<Option<Value<'env, Object>>> {
-
-  exports.set_named_property("add", env.create_function("add", add)?)?;
-  Ok(None)
+#[module_exports]
+fn init(mut exports: JsObject ) -> Result<()> {
+  exports.create_named_method("add", add)?;
+  Ok(())
 }
 
 #[js_function(2)] // ------> arguments length, omit for zero
-fn add<'env>(ctx: CallContext<'env>) -> Result<Value<'env, Number>> {
-    let a: f64 = ctx.get::<Number>(0)?.try_into().unwrap();
-    let b: f64 = ctx.get::<Number>(1)?.try_into().unwrap();
+fn add(ctx: CallContext) -> Result<JsNumber> {
+    let a: f64 = ctx.get::<JsNumber>(0)?.try_into().unwrap();
+    let b: f64 = ctx.get::<JsNumber>(1)?.try_into().unwrap();
     ctx.env.create_double(a + b)
 }

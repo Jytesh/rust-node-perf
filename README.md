@@ -3,13 +3,18 @@ Benchmarking of various frameworks used in interfacing rust with node.js. Many o
 
 This project provides a minimal implementation of a function `add(a, b)` in each framework to benchmark these overheads so we can compare their performance.
 
+# Requirements
+- Node v8+
+- rustup toolchain (rustc + cargo)
+- wasm-buildpack ( `curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh` )
+- Clone the repo and run `npm install`
 ## Results
 
-| Framework                     | Relative Exec Time | Effort   |
-| ----------------------------- | ------------------ | -------- |
-| node.js                       | 1                  | n/a      |
-| wasm-pack (nodejs target)     | 1.5386953312994696 | low      |
-| rust-addon                    | 2.563630295032209  | high     |
-| napi-rs                       | 3.1991337066589773 | mid      |
-| neon                          | 13.342197321199631 | mid      |
-| node-bindgen                  | 13.606728128895583 | low      |
+┌─────────┬────────────┬────────────────────┬────────┐
+│ (index) │   module   │    relativeTime    │ effort │
+├─────────┼────────────┼────────────────────┼────────┤
+│    0    │    'js'    │         1          │ lowest │
+│    1    │ 'wasmPack' │ 1.7524918867705868 │ highest│
+│    2    │   'neon'   │ 15.817699428654072 │ medium │
+│    3    │  'napiRs'  │  3.13050560950176  │  low   │
+└─────────┴────────────┴────────────────────┴────────┘

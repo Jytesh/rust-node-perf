@@ -10,8 +10,8 @@ edition = "2018"
 crate-type = ["cdylib"]
 
 [dependencies]
-napi-rs = "0.2.3"
-napi-rs-derive = "0.1.0"
+napi = "1.4.0"
+napi-derive = "1.1.0"
 
 [build-dependencies]
-napi-build = "0.1.1"
+napi-build = "1.0.1"
